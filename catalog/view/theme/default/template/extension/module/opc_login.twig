@@ -1,0 +1,56 @@
+<div class="list-group">
+  {% if not logged %}
+    <a href="{{ google }}" class="list-group-item"><img src="{{ google_image }}" alt="{{ text_google }}" class="img-responsive" /></a>
+    <a class="list-group-item">
+      <fb:login-button class="fb-login-button" data-max-rows="1" data-size="medium" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false" scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
+    </a>
+
+    <script>
+      function statusChangeCallback(response) {
+        if (response.status === 'connected') {
+          FB.api('/me',{fields: 'name, email' }, function(response) {
+            $.ajax({
+              url: 'index.php?route=account/opc_login/facebook',
+              type: 'post',
+              data: response,
+              dataType: 'json',
+              success: function(json) {
+                if (json['success']) {
+                   location = 'index.php?route=account/password';
+                }
+              }
+            });
+          });
+        }
+      }
+
+      function checkLoginState() {
+        FB.getLoginStatus(function(response) {
+          statusChangeCallback(response);
+        });
+      }
+
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : {{ facebook }},
+          cookie     : true,
+          xfbml      : true,
+          version    : 'v2.12'
+        });
+
+        FB.getLoginStatus(function(response) {
+          statusChangeCallback(response);
+        });
+
+      };
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "https://connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+    </script>
+  {% endif %}
+</div>

@@ -1,0 +1,168 @@
+<footer>
+  <div class="container">
+    <div class="row">
+      {% if informations %}
+      <div class="col-sm-3 col-xs-6">
+        <h5>{{ text_information }}</h5>
+        <ul class="list-unstyled">
+         {% for information in informations %}
+         <li><a href="{{ information.href }}">{{ information.title }}</a></li>
+         {% endfor %}
+       </ul>
+     </div>
+     {% endif %}
+     <div class="col-sm-3 col-xs-6">
+        <h5>{{ text_service }}</h5>
+        <ul class="list-unstyled">
+          <li><a href="{{ contact }}">{{ text_contact }}</a></li>
+          <li><a href="{{ return }}">{{ text_return }}</a></li>
+          <li><a href="{{ sitemap }}">{{ text_sitemap }}</a></li>
+        </ul>
+      </div> 
+<div class="visible-xs col-xs-12"></div> 
+      <div class="col-sm-3 col-xs-6">
+        <h5>{{ text_extra }}</h5>
+        <ul class="list-unstyled">
+          <li><a href="{{ manufacturer }}">{{ text_manufacturer }}</a></li>
+          <li><a href="{{ voucher }}">{{ text_voucher }}</a></li>
+          <li><a href="{{ contact }}">{{ text_contact }}</a></li>
+
+<!-- <li><a href="{{ affiliate }}">{{ text_affiliate }}</a></li> -->
+  <!-- <li><a href="{{ special }}">{{ text_special }}</a></li>  -->
+</ul>
+</div>
+<div class="col-sm-3 col-xs-6">
+  <h5>{{ text_account }}</h5>
+  <ul class="list-unstyled">
+    <li><a href="{{ account }}">{{ text_account }}</a></li>
+    <li><a href="{{ order }}">{{ text_order }}</a></li>
+    <li><a href="{{ wishlist }}">{{ text_wishlist }}</a></li>
+    <li><a href="{{ newsletter }}">{{ text_newsletter }}</a></li>
+  </ul>
+</div>
+
+
+
+
+
+
+</div>
+</div>
+</div>
+<p class="footer-bottom">{{ powered }}</p>
+<div class="fixed-shortcut-wrapper">
+	<style>
+		.shortcut .qrcode-a:hover .qrcode{
+			display:block;
+		}
+		.shortcut .qrcode-a .qrcode{
+	    	display: none;
+	    	position: absolute;
+		    width: 150px;
+		    top: -50px;
+		    left: -150px;
+		    background-color: #fff;
+		    border-radius: 4px;
+		    border: 1px solid #ccc;
+		    padding: 5px;
+	    }
+	</style>
+  <div class="shortcut hidden-sm hidden-xs">
+  	<a class="qrcode-a" style="cursor: pointer;position: relative;">
+  		<i class="fa fa-qrcode" aria-hidden="true"></i>
+  		<img class="qrcode" src="/catalog/view/theme/default/image/qrcode.png">
+  	</a>
+    <a href="{{ helper.url.link("checkout/cart") }}"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
+    <a href="{{ account }}"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
+    <a href="{{ wishlist }}"><i class="fa fa-heart" aria-hidden="true"></i></a>
+  </div>
+  <div class="go-top">
+    <a href="#" class="scroll-top"><i class="fa fa-chevron-up" aria-hidden="true"></i>TOP</a>
+  </div>
+</div>
+</footer>
+
+{% if is_mobile %}
+<style>
+@font-face {
+  font-family: 'iconfont';  /* project id 926086 */
+  src: url('//at.alicdn.com/t/font_926086_oyi02uvemc.eot');
+  src: url('//at.alicdn.com/t/font_926086_oyi02uvemc.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_926086_oyi02uvemc.woff') format('woff'),
+  url('//at.alicdn.com/t/font_926086_oyi02uvemc.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_926086_oyi02uvemc.svg#iconfont') format('svg');
+}
+.iconfont{
+    font-family:"iconfont" !important;
+    font-size:16px;font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+    
+        display: block;
+    margin: 0 auto;
+    width: 30px;
+    margin-top: 5px;
+    
+}
+.footer-nav{
+	width:100%;
+	position:fixed;
+	height:50px;
+	background-color:#fff;
+	border-top:1px solid #ccc;
+	bottom: 0px;
+    z-index: 999;
+        display: flex;
+    flex-flow: row nowrap;
+        justify-content: space-evenly;
+}
+
+.footer-nav .item{
+	width: 50px;
+    text-align: center;
+    height: 50px;
+    font-size: 12px;
+}
+</style>
+<div class="footer-nav">
+	<a href="/"><div class="item"><i class="iconfont">&#xe644;</i><div>{{ text_footer_nav_home }}</div></div></a>
+	<a href="/index.php?route=product/category&path=19289"><div class="item"><i class="iconfont">&#xe63e;</i><div>{{ text_footer_nav_category }}</div></div></a>
+	<a href="/index.php?route=checkout/cart"><div class="item"><i class="iconfont">&#xe61b;</i><div>{{ text_footer_nav_cart }}</div></div></a>
+	<a href="/index.php?route=account/account"><div class="item"><i class="iconfont">&#xe646;</i><div>{{ text_footer_nav_person }}</div></div></a>
+</div>
+{% endif %}
+
+
+{% for script in scripts %}
+<script src="{{ script }}" type="text/javascript"></script>
+{% endfor %}
+
+<script type="text/javascript">
+  var showAlert = function(type, content) {
+    if (type == 'cart') {
+      redirectButtonText = '{{ button_checkout }}';
+      redirectButtonLocation = '{{ helper.url.link("checkout/cart") }}';
+    } else if (type == 'wishlist') {
+      redirectButtonText = '{{ button_wishlist }}';
+      redirectButtonLocation = '{{ wishlist }}';
+    } else if (type == 'compare') {
+      redirectButtonText = '{{ button_compare }}';
+      redirectButtonLocation = '{{ helper.url.link("product/compare") }}';
+    }
+
+    layer.open({
+      title: '{{ text_layer_popup_title }}',
+      skin: 'layer-alert',
+      shadeClose: true,
+      content: content,
+      btn: [redirectButtonText, '{{ button_continue_shopping }}'],
+      yes: function() {
+        location = redirectButtonLocation;
+      }
+    });
+  }
+</script>
+
+{{ helper.debug_bar.render }}
+</body></html>

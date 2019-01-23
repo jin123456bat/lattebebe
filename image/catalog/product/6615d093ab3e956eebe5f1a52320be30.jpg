@@ -1,0 +1,18 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head><title>
+	Untitled Page
+</title></head>
+<body>
+    <form method="post" action="./imgbd.aspx?img=168529.jpg&amp;utente=6392A822" id="form1">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUJODExMDE5NzY5D2QWAgIDD2QWAgIBDw8WAh4EVGV4dAUuTnVtZXJvIG1hc3NpbW8gZGkgYWNjZXNzaSBnaW9ybmFsaWVyaSBzdXBlcmF0b2RkZNt2x74OblR71IPhVkKb1JbPjl7rgHfBv6IE5+7xNYIe" />
+
+<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="C74F12CC" />
+    <div>
+        <span id="infoLbl"><font color="Red">Numero massimo di accessi giornalieri superato</font></span></div>
+    </form>
+</body>
+</html>
