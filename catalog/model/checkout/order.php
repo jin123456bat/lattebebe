@@ -330,6 +330,9 @@ class ModelCheckoutOrder extends Model
 		$order_info = $this->getOrder($order_id);
 		if ($order_info)
 		{
+			//发送邮件
+			
+			
 			// Fraud Detection
 			$this->load->model('account/customer');
 			$customer_info = $this->model_account_customer->getCustomer($order_info['customer_id']);

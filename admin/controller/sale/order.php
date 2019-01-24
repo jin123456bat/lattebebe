@@ -1433,7 +1433,7 @@ class ControllerSaleOrder extends Controller {
 		} elseif (isset($this->request->get['order_id'])) {
 			$orders[] = $this->request->get['order_id'];
 		}
-
+		
 		foreach ($orders as $order_id) {
 			$order_info = $this->model_sale_order->getOrder($order_id);
 
@@ -1551,7 +1551,7 @@ class ControllerSaleOrder extends Controller {
 				);
 			}
 		}
-
+		
 		$this->response->setOutput($this->load->view('sale/order_invoice', $data));
 	}
 

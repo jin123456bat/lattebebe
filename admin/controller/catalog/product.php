@@ -3,6 +3,20 @@ class ControllerCatalogProduct extends Controller {
 	private $error = array();
 
 	public function index() {
+// 		include_once DIR_APPLICATION.'controller/sale/order.php';
+// 		$_GET['order_id'] = 70;
+// 		$a = new ControllerSaleOrder($this->registry);
+// 		$a->invoice();
+// 		$content = $this->response->getOutput();
+// 		$content = str_replace(array(
+// 			'href="view',
+// 			'src="view',
+// 		), array(
+// 			'href="https://lattebebe.it/admin/view',
+// 			'src="https://lattebebe.it/admin/view',
+// 		), $content);
+// 		exit();
+		
 		$this->load->language('catalog/product');
 
 		$this->document->setTitle($this->language->get('heading_title'));
@@ -883,6 +897,14 @@ class ControllerCatalogProduct extends Controller {
 			$data['upc'] = $product_info['upc'];
 		} else {
 			$data['upc'] = '';
+		}
+		
+		if (isset($this->request->post['hscode'])) {
+			$data['hscode'] = $this->request->post['hscode'];
+		} elseif (!empty($product_info)) {
+			$data['hscode'] = $product_info['hscode'];
+		} else {
+			$data['hscode'] = '';
 		}
 
 		if (isset($this->request->post['ean'])) {
